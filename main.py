@@ -3,6 +3,8 @@ from init_grids import get_matrix as mat
 from beginning import beginning_game as start
 from place_ships_p1 import get_ship_placements_p1 as ships_p1
 from player_turn import player_go as go
+from check_end import check_end
+from print_grid import print_grid
 
 start()
 m, n = length()
@@ -14,9 +16,20 @@ dict_ships = {
     "Cruiser" : 4,
     "Battleship" : 5
 }
+
 p1_hidden_matrix = ships_p1(p1_matrix)
-for i in range(m):
-    for j in range(n):
-        print(p1_hidden_matrix[i][j], end = " ")
-    print("\n")
+
+print_grid(p1_matrix)
+
+# for i in range(m):
+#     for j in range(n):
+#         print(p1_hidden_matrix[i][j], end = " ")
+#     print("\n")
+    
 # go(p1_hidden_matrix)
+
+
+if check_end(p1_matrix) == 1  :
+    print("Game over. Player 1 won!")
+else:
+    print ("The game continues. It's player 2's turn.")

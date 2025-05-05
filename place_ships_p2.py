@@ -1,3 +1,5 @@
+from print_grid import print_grid
+
 ship_dict = {
     0: ("Destroyer", 2),
     1: ("Submarine", 3),
@@ -38,6 +40,7 @@ def free_area(lnstart, lnstop, colstart, colstop, matrix):
 
 def vertical_position(matrix, ship_size, ship_name):
     print(f"Place your {ship_name} (e.g.: A0A1).")
+    print_grid(matrix)
     while True:
         position = input().strip().upper()
 
@@ -153,4 +156,5 @@ def place_ships(matrix):
             elif next_action == 1:
                 ship -= 1
             ship += 1
+    print()
     return final_matrix

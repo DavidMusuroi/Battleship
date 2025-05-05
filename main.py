@@ -24,14 +24,12 @@ print_grid(p2_hidden_matrix)
 
 while end == False:
     p2_matrix = player_go(p2_matrix, p2_hidden_matrix)
-    if check_end(p1_matrix) == True:
-        end = True
-        print("Game over. Player 1 sunk all the ships!")
+    if check_end(p2_matrix) == True:
+        break
     else:
         print("The game continues. It's player 2's turn.")
     p1_matrix = player_go(p1_matrix, p1_hidden_matrix)
-    if check_end(p2_matrix) == True:
-        end = True
-        print("Game over. Player 2 sunk all the ships!")
+    if check_end(p1_matrix) == True:
+        break
     else:
         print("The game continues. It's player 1's turn.")

@@ -8,7 +8,6 @@ def get_ship_placements_p1(matrix):
         lin = random.randint(0, m - 1)
         col = random.randint(0, n - 1)
         choice = random.randint(0, 1)
-        print(lin, col, choice)
         okay = False
         # choice = H / V, Horizontal = False, Vertical = True
         if matrix[lin][col] == '-':

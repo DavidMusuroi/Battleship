@@ -4,7 +4,7 @@ def check_end(matrix):
     total_hits = 0
     for i in range(rows):
         for j in range(cols):
-            if matrix[i][j] != '-':
+            if matrix[i][j] == 'H':
                 total_hits += 1
     if total_hits == 14:
         return True

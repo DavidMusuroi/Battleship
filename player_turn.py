@@ -1,5 +1,7 @@
 import re
 from check_end import check_end
+from check_sink import check_sink
+
 def player_go(matrix, hidden_matrix):
     m = len(matrix)
     n = len(matrix[0])
@@ -20,12 +22,23 @@ def player_go(matrix, hidden_matrix):
                     okay = True
                     if hidden_matrix[lin][col] != '-':
                         okay = False
-                        hidden_matrix[lin][col] = 'H'
                         matrix[lin][col] = 'H'
+                        prev_char = hidden_matrix[lin][col]
+                        hidden_matrix[lin][col] = 'H'
                         if check_end(matrix) == True:
                             print("Game over. Player 1 sunk all the ships!")
                             okay = True
-                        else
+                        elif check_sink(hidden_matrix, prev_char) == True:
+                            print("You sunk the", end = " ")
+                            if prev_char == 'D':
+                                print("Destroyer")
+                            elif prev_char == 'S':
+                                print("Submarine")
+                            elif prev_char == 'C':
+                                print("Cruiser")
+                            elif prev_char == 'B':
+                                print("Battleship")
+                        else:
                             print("HIT!")
                     else:
                         print("MISS!")

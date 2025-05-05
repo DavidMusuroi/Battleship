@@ -1,6 +1,7 @@
 import re
 from check_end import check_end
 from check_sink import check_sink
+from print_grid import print_grid
 
 def player_go(matrix, hidden_matrix):
     m = len(matrix)
@@ -26,6 +27,7 @@ def player_go(matrix, hidden_matrix):
                         prev_char = hidden_matrix[lin][col]
                         hidden_matrix[lin][col] = 'H'
                         if check_end(matrix) == True:
+                            print_grid(matrix)
                             print("Game over. Player 1 sunk all the ships!")
                             okay = True
                         elif check_sink(hidden_matrix, prev_char) == True:
@@ -45,6 +47,7 @@ def player_go(matrix, hidden_matrix):
                         matrix[lin][col] = 'M'
                 else:
                     print("Error: You've already hit this target before!")
+                print_grid(matrix)
             else:
                 print("Error: Invalid target!")
     return matrix

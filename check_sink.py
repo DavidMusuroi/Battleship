@@ -1,5 +1,4 @@
 def check_sink(matrix, char):
-    print(char)
     m = len(matrix)
     n = len(matrix[0])
     for i in range(m):

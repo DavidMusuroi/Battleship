@@ -79,7 +79,7 @@ def horizontal_position(matrix, ship_size, ship_name):
         position = input().strip().upper()
 
         if len(position) != 4:
-            print("Error. Enter a valid position (e.g. A0B0b)")
+            print("Error. Enter a valid position (e.g. A0B0)")
             continue
         try:
             lnstart = int(position[1])

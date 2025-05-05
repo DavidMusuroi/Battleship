@@ -9,7 +9,7 @@ def player_go(matrix, hidden_matrix):
     okay = False
     while okay == False:
         print("Choose your target! (e.g.: A0)")
-        target = input()
+        target = input().strip().upper()
         if len(target) != 2:
             print("Error: Invalid target")
         else:

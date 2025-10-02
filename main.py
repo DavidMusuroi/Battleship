@@ -18,7 +18,7 @@ end = False
 
 p1_hidden_matrix = ships_p1(p1_matrix)
 print(
-    "Player 1's ships have been placed on the board.\n\nNow it's Player 2's turn to place the ships.\n"
+    "Player 1's ships have been placed on the board at random.\n\nNow it's Player 2's turn to place the ships.\n"
 )
 
 # print hidden boards to file for reference

@@ -1,5 +1,5 @@
 def get_grids_length():
-    print("Would you like a classic board or a custom board?")
+    print("Would you like a classic (6 x 6) board or a custom board?")
     while 1:
         choice = input()
         if choice == "classic":

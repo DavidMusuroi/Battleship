@@ -9,7 +9,7 @@ def player_go(matrix, hidden_matrix):
     n = len(matrix[0])
     okay = False
     while okay == False:
-        print("Choose your target! (e.g.: A0)")
+        print("Choose your target! (e.g.: A0)\n")
         print_grid(matrix)
         target = input().strip().upper()
         if len(target) != 2:
@@ -47,13 +47,12 @@ def player_go(matrix, hidden_matrix):
                             elif prev_char == "B":
                                 print("Battleship")
                         else:
-                            print("HIT!")
+                            print("\nHIT!\n")
                     else:
-                        print("MISS!")
+                        print("MISS!\n")
                         matrix[lin][col] = "M"
                 else:
                     print("Error: You've already hit this target before!")
-                print_grid(matrix)
             else:
                 print("Error: Invalid target!")
     return matrix

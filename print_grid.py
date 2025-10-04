@@ -10,4 +10,4 @@ def print_grid(matrix):
         for c in range(cols):
             print(matrix[r][c], end=' ')
         print()
-    print("\n\n")
+    print("\n")

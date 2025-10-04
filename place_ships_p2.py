@@ -1,4 +1,5 @@
 from print_grid import print_grid
+import time
 
 ship_dict = {
     0: ("Destroyer", 2),
@@ -39,7 +40,7 @@ def free_area(lnstart, lnstop, colstart, colstop, matrix):
 
 
 def vertical_position(matrix, ship_size, ship_name):
-    print(f"Place your {ship_name} (e.g.: A0A1).")
+    print(f"Place your {ship_name} (e.g.: A0A1).\n")
     print_grid(matrix)
     while True:
         position = input().strip().upper()
@@ -54,12 +55,15 @@ def vertical_position(matrix, ship_size, ship_name):
             colstop = letters_to_num[(position[2])]
         except (ValueError, KeyError):
             print("Invalid input. Please follow the format A0A1.")
+            print_grid(matrix)
             continue
 
         if colstart != colstop:
-            print("Error. Place your ship vertically.")
+            print("Error. Please place your ship vertically.")
+            print_grid(matrix)
         elif abs(lnstart - lnstop) != ship_size - 1:
             print(f"Error. Please select an area of {ship_size} cells.")
+            print_grid(matrix)
         elif free_area(lnstart, lnstop, colstart, colstop, matrix):
             return lnstart, lnstop, colstart, 3
         else:
@@ -78,6 +82,7 @@ def vertical_position(matrix, ship_size, ship_name):
 
 def horizontal_position(matrix, ship_size, ship_name):
     print(f"Place your {ship_name} (e.g.: A0A1).")
+    print_grid(matrix)
     while True:
         position = input().strip().upper()
 
@@ -91,12 +96,15 @@ def horizontal_position(matrix, ship_size, ship_name):
             colstop = letters_to_num[(position[2])]
         except (ValueError, KeyError):
             print("Invalid input. Please follow the format A0A1.")
+            print_grid(matrix)
             continue
 
         if lnstart != lnstop:
-            print("Error. Place your ship horizontally.")
+            print("Error. Please place your ship horizontally.")
+            print_grid(matrix)
         elif abs(colstart - colstop) != ship_size - 1:
             print(f"Error. Please select an area of {ship_size} cells.")
+            print_grid(matrix)
         elif free_area(lnstart, lnstop, colstart, colstop, matrix):
             return lnstart, colstart, colstop, 3
         else:
@@ -120,13 +128,24 @@ def place_ships(matrix):
     ship = 0
     while ship < 4:
         ship_name, ship_size = ship_dict[ship]
+        if ship == 0:
+            print("Here is your grid :\n")
+            print_grid(final_matrix)
+        else:
+            print("Would you like to see your grid? (Y/N)")
+            choice = input().strip()
+            print()
+            if choice == 'Y':
+                print_grid(final_matrix)
+                time.sleep(0.5)
         print(f"Please, place your {ship_name}.\n")
         print("Position options:\n")
         print("1 - vertical\n")
         print("2 - horizontal\n")
         choice = input().strip()
+        print()
         while choice not in "12":
-            print("Choose a valid option (1/2).")
+            print("Choose a valid option (1 or 2).")
             choice = input().strip()
             # placed=False
             # while not placed:

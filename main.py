@@ -1,5 +1,4 @@
-from init_grids import get_grids_length as length
-from init_grids import get_matrix as mat
+from init_grids import get_grids_length as length, get_matrix as mat
 from beginning import beginning_game as start
 from place_ships_p1 import get_ship_placements_p1 as ships_p1
 from place_ships_p2 import place_ships as ships_p2
@@ -9,12 +8,15 @@ from print_grid import print_grid
 
 import sys
 import copy
+import tkinter as tk
 
 start()
 m, n = length()
 p1_matrix = mat(m, n)
 p2_matrix = mat(m, n)
 end = False
+
+
 
 p1_hidden_matrix = ships_p1(p1_matrix)
 print(
@@ -44,6 +46,8 @@ f.close()
 p2_hidden_cpy = copy.deepcopy(p2_hidden_matrix)
 p1_hidden_cpy = copy.deepcopy(p1_hidden_matrix)
 
+print("This is your setup :\n")
+print_grid(p2_hidden_matrix)
 print("It's player 1's turn.\n")
 while end == False:
     p2_matrix = player_go(p2_matrix, p2_hidden_cpy)
